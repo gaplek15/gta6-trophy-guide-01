@@ -1,74 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonida Trophy Guide — GTA VI (PS5)</title>
 <link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
 </head>
 <body>
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+    <p class="kicker">Grand Theft Auto VI · PlayStation 5 · 55 trophies</p>
     <h1>Leonida Trophy Guide</h1>
     <p class="lede">Every trophy, a real guide for each one, a roadmap to the platinum — and a tracker that remembers what you have earned. Works offline; nothing leaves your browser.</p>
-    <div class="progress-wrap" aria-label="Platinum progress">
-      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+    <div class="progress-wrap">
+      <div class="progress-bar" role="progressbar" aria-label="Trophies earned"><div id="progressFill" class="progress-fill" style="width: 0%"></div></div>
       <p id="progressText" class="progress-text">0 of 55 earned</p>
+      <p id="gradeCounts" class="grade-counts"></p>
     </div>
-    <p id="gradeCounts" class="grade-counts"></p>
   </div>
 </header>
-
 <nav class="tabs" aria-label="Views">
-  <button id="tabChecklist" type="button" class="tab active">Checklist</button>
-  <button id="tabRoadmap" type="button" class="tab">Roadmap to the Platinum</button>
+  <button id="tabChecklist" class="tab active" type="button">Checklist</button>
+  <button id="tabRoadmap" class="tab" type="button">Roadmap to the Platinum</button>
 </nav>
-
-<section id="viewChecklist" class="view">
-  <div class="controls">
-    <label class="search">Search <input id="search" type="search" placeholder="Trophy, mission or place…" autocomplete="off"></label>
-    <fieldset class="kinds" id="kindFilters" aria-label="Filter by kind">
-      <legend>Kind</legend>
-      <button type="button" data-kind="all" class="kind active">All</button>
-      <button type="button" data-kind="story" class="kind">Story</button>
-      <button type="button" data-kind="missable" class="kind">Missable</button>
-      <button type="button" data-kind="collectibles" class="kind">Collectibles</button>
-      <button type="button" data-kind="activities" class="kind">Activities</button>
-      <button type="button" data-kind="online" class="kind">Online</button>
-    </fieldset>
-    <label class="grade">Grade
-      <select id="gradeFilter">
-        <option value="all">All grades</option>
-        <option value="platinum">Platinum</option>
-        <option value="gold">Gold</option>
-        <option value="silver">Silver</option>
-        <option value="bronze">Bronze</option>
-      </select>
-    </label>
-    <label class="toggle"><input id="spoilerToggle" type="checkbox"> Hide story spoilers</label>
-    <label class="toggle"><input id="hideEarned" type="checkbox"> Hide earned</label>
-    <div class="io">
-      <button id="exportBtn" type="button">Export progress</button>
-      <label class="import-btn">Import progress <input id="importInput" type="file" accept="application/json,.json"></label>
+<main>
+  <section id="viewChecklist" class="view">
+    <div class="controls">
+      <label class="search-label">Search <input id="search" type="search" placeholder="Trophy, mission or place…" autocomplete="off"></label>
+      <fieldset id="kindFilters" class="kind-filters">
+        <legend>Kind</legend>
+        <button type="button" class="kind-btn active" data-kind="all">All</button>
+        <button type="button" class="kind-btn" data-kind="story">Story</button>
+        <button type="button" class="kind-btn" data-kind="missable">Missable</button>
+        <button type="button" class="kind-btn" data-kind="collectibles">Collectibles</button>
+        <button type="button" class="kind-btn" data-kind="activities">Activities</button>
+        <button type="button" class="kind-btn" data-kind="online">Online</button>
+      </fieldset>
+      <label class="grade-label">Grade
+        <select id="gradeFilter">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="toggle"><input id="spoilerToggle" type="checkbox"> Hide story spoilers</label>
+      <label class="toggle"><input id="hideEarned" type="checkbox"> Hide earned</label>
+      <div class="io">
+        <button id="exportBtn" type="button">Export progress</button>
+        <label class="import-label">Import progress <input id="importInput" type="file" accept="application/json,.json"></label>
+      </div>
     </div>
-  </div>
-  <p id="resultCount" class="result-count"></p>
-  <p id="onlineNote" class="online-note" hidden>There are no online trophies in this list — all 55 are single-player and offline. (Source: PowerPyx trophy roadmap.)</p>
-  <ul id="trophyList" class="trophy-list"></ul>
-  <p id="emptyNote" class="empty-note" hidden>No trophies match these filters.</p>
-</section>
-
-<section id="viewRoadmap" class="view" hidden>
-  <p class="roadmap-intro" id="roadmapIntro"></p>
-  <ol id="roadmapList" class="roadmap-list"></ol>
-  <p class="roadmap-foot">Sources: PowerPyx — GTA 6 Trophy Guide &amp; Roadmap (difficulty 4/10, about 200 hours, one playthrough, 0 online trophies) and the official trophy list as cross-checked by Planet GTA 6 with Exophase and PSNProfiles. Cheats disable trophies and saving — never use them on a platinum run.</p>
-</section>
-
+    <p id="resultCount" class="result-count"></p>
+    <p id="onlineNote" class="online-note" hidden>There are no online trophies in this list — all 55 are single-player and offline. (Source: PowerPyx trophy roadmap.)</p>
+    <ul id="trophyList" class="trophy-list"></ul>
+    <p id="emptyNote" class="empty-note" hidden>No trophies match these filters.</p>
+  </section>
+  <section id="viewRoadmap" class="view" hidden>
+    <p id="roadmapIntro" class="roadmap-intro"></p>
+    <ol id="roadmapList" class="roadmap-list"></ol>
+    <p class="roadmap-foot">Sources: PowerPyx — GTA 6 Trophy Guide &amp; Roadmap (difficulty 4/10, about 200 hours, one playthrough, 0 online trophies) and the official trophy list as cross-checked by Planet GTA 6 with Exophase and PSNProfiles. Cheats disable trophies and saving — never use them on a platinum run.</p>
+  </section>
+</main>
 <footer class="foot">
   <p>Guides are written in the author's own words for this entry; official trophy names and descriptions are shown as PlayStation publishes them. Each guide cites its sources beside it. No Rockstar logo, artwork or game screenshots are used. Data: app/data/trophies.json (55 trophies) and app/data/roadmap.json.</p>
 </footer>
-
-<script type="module" src="app.js"></script>
 </body>
 </html>
